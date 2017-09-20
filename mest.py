@@ -1,7 +1,9 @@
+import csv
 class School:
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, eits, fellows):
+        self.eits = eits
+        self.fellows = fellows
 
 
 class EIT:
@@ -23,15 +25,24 @@ class Fellow:
         self.happiness_level = happiness_level
 
     def teach(self):
-        return self.happiness_level -= 1
+        self.happiness_level -= 1
 
     def eat(self):
-        return self.happiness_level += 1
+        self.happiness_level += 1
 
-with open('eits.csv', 'rb') as f:
-	nationalities = ['Ghana', 'Kenya', 'Nigeria', 'South Africa', 'Ivory Coast']	
-	for line in f.readlines():
-		for name in line.split(','):
-			if name not in nationalities:
-				print ('Not Permitted!')
-				
+with open('eits.csv', 'r') as file:
+	nationalities = ['Ghana', 'Kenya', 'Nigeria', 'South Africa', 'Ivory Coast']
+	l =[]	
+	for line in csv.reader(file):
+		for name in line:
+			l.append(name)
+	
+	for i in range(len(l)):
+		if i % 2 != 0:
+			if l[i] not in nationalities:
+				print('Not Permitted!')
+			else:
+				print(l[i])
+		else:
+			continue
+
