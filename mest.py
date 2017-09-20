@@ -27,3 +27,11 @@ class Fellow:
 
     def eat(self):
         return self.happiness_level += 1
+
+with open('eits.csv', 'rb') as f:
+	nationalities = ['Ghana', 'Kenya', 'Nigeria', 'South Africa', 'Ivory Coast']	
+	for line in f.readlines():
+		for name in line.split(','):
+			if name not in nationalities:
+				print ('Not Permitted!')
+				
