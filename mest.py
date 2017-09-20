@@ -31,18 +31,9 @@ class Fellow:
         self.happiness_level += 1
 
 with open('eits.csv', 'r') as file:
-	nationalities = ['Ghana', 'Kenya', 'Nigeria', 'South Africa', 'Ivory Coast']
-	l =[]	
+	nationalities = ['Ghana', 'Kenya', 'Nigeria', 'South Africa', 'Ivory Coast']	
 	for line in csv.reader(file):
 		for name in line:
-			l.append(name)
-	
-	for i in range(len(l)):
-		if i % 2 != 0:
-			if l[i] not in nationalities:
-				print('Not Permitted!')
-			else:
-				print(l[i])
-		else:
-			continue
+			if name in nationalities:
+				print (line)
 
