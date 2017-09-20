@@ -7,8 +7,9 @@ class Contact:
         for key, val in detail.items():
             setattr(self, key, val)
 
-    def save(self, contacts):
-        contacts[self.name] = [self.phonenum, self.gender, self.postaladdress]
+    def save(self):
+        contacts[self.name] = [self.phonenum, self.gender, self.postaladdress])
+
 
 
 class Manager:
@@ -16,17 +17,18 @@ class Manager:
     def __init__(self):
         pass
 
-    def add_contact(self, details={}):
-        details['name'] = input("name: ")
-        details['phonenum'] = input("p_num: ")
-        details['gender'] = input("gender: ")
-        details['postaladdress'] = input("addr: ")
-        new_contact = Contact(details)
+    def add_contact(self, details = {}):
+        details['name']=input("name: ")
+        details['phonenum']=input("p_num: ")
+        details['gender']=input("gender: ")
+        details['postaladdress']=input("addr: ")
+        new_contact=Contact(details)
         new_contact.save(details)
+        new_contact.save_contact()
 
     def search_contact(self):
         print('Enter name to search')
-        name = input()
+        name=input()
 
         for key in contacts.keys():
             if key == name:
@@ -36,7 +38,7 @@ class Manager:
 
     def delete_contact(self):
         print('Enter contact name to delete')
-        name = input()
+        name=input()
 
         for key in contacts.keys():
             if key == name:
@@ -50,7 +52,7 @@ class Manager:
         print('Enter 1 to add contact')
         print('Enter 2 to retrieve a contact')
         print('Enter 3 to delete a contact')
-        choice = int(input())
+        choice=int(input())
         if choice == 1:
             self.add_contact()
         elif choice == 2:
@@ -59,3 +61,23 @@ class Manager:
             self.delete_contact()
         else:
             print('Invalid Choice')
+
+    def read_file(self):
+        file=open('contacts.txt', 'r')
+        contacts=file.read()
+        print(contacts)
+        file.close()
+
+    def save_contact(self):
+        file=open('contacts.txt', 'a')
+        file.write(contacts)
+        file.close()
+
+
+def run():
+    new=Manager()
+    print(new.read_file())
+    new.choice()
+
+if __name__ == '__main__':
+    run()
