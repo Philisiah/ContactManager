@@ -1,7 +1,8 @@
 class MoneyError(Exception):
 
-   def __str__(self):
-        return "Money Exception: We cannot afford to hire"
+    def __str__(self):
+        return "Money Exception: We cannot afford to hire :"
+
 
 class Fellow:
 
@@ -14,31 +15,12 @@ class Fellow:
                 self.country = country
                 Fellow.fellows_hired += 1
             else:
-              raise MoneyError
+                raise MoneyError
         except MoneyError:
-            print (MoneyError(), name)
-        
-
-for num in range(10):
-  name = input("Enter Name: ")
-  cntry = input("Enter Country: ")
-  Fellow(name, cntry)
+            print(MoneyError(), name)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# for num in range(10):
+#   name = input("Enter Name: ")
+#   cntry = input("Enter Country: ")
+#   Fellow(name, cntry)
